@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvans" width="1368px" height="786px" style="border:1px solid #dd33dd;">
+<script>
+    let Rectangle = function(length, width) {
+        this.length = length;
+        this.getLength = function () {
+            return length;
+        };
+        this.width = width ;
+        this.getWidth = function () {
+            return width;
+        };
+        this.getArea = function () {
+            return length*width;
+        };
+        this.getPerimeter = function () {
+            return 2*(length + width);
+        };
+    };
+    let rectangle = new Rectangle(50,20);
+    let length = rectangle.getLength();
+    let width = rectangle.getWidth();
+    let area = rectangle.getArea();
+    let perimeter = rectangle.getPerimeter();
+    alert("Length = " + length + " Width = " + width + " Area = " + area + " Perimeter = " + perimeter);
+    function drawRectangle() {
+      var ctx = document.getElementById("myCanvans").getContext("2d");
+      var length = rectangle.length();
+      var  width = rectangle.width();
+      var rectangle = new Rectangle(length,width);
+      ctx.fillText(10,10,150,80);
+  }
+</script>
+</body>
+</html>
