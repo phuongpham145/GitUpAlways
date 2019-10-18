@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Car(name,model,weight,color) {
+        this.name = name;
+        this.model = model;
+        this.weight = weight;
+        this.color = color;
+        this.start = function () {
+            document.write('Engine is started ! ');
+        }
+        this.drive = function () {
+            document.write('Car is running');
+        }
+        this.stop = function () {
+            document.write('Cars is stopping ')
+        }
+        this.break = function () {
+            document.write('Car is broken ')
+        }
+        this.changeSpeed = function (speed) {
+            this.speed = speed ;
+            document.write("New speed is " + this.speed);
+        }
+        this.toString()
+    }
+    var myCar = new Car("Toyota","Luxy","1200","black");
+    if (confirm("Do you drive this car ? ")) myCar.start();
+</script>
+</body>
+</html>

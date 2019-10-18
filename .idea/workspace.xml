@@ -21,8 +21,9 @@
   <component name="ProjectId" id="1S8ay8KpsIMHEr1Sd01uTL5mfoe" />
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Algorithm.html" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -36,6 +37,19 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="Algorithm.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GitUpAlways/Algorithm.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" uri="http://localhost:63342/GitUpAlways/Algorithm.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.Algorithm.html" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -46,7 +60,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1570947927933</updated>
-      <workItem from="1570947929124" duration="9895000" />
+      <workItem from="1570947929124" duration="28396000" />
     </task>
     <servers />
   </component>

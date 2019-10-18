@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function initArray(numberOfItem) {
+        let arr = new Array();
+        for (let i = 0; i < numberOfItem; i++)
+            arr.push(Math.floor(Math.random() * 100));
+        return arr;
+    }
+        function toString(arr) {
+            return arr.join(", ");
+        }
+ //       function find(arr, value){
+    //    for (let i = 0; i < arr.length; i ++)
+        //    if (arr[i] === value)
+        //        return i;
+         //   return -1;
+     //   }
+    let tong = 0;
+    function sum(arr) {
+        for (let i = 0; i < arr.length; i++)
+            tong += arr[i];
+            return tong;
+    }
+    function find(arr, d){
+        let dem = 0 ;
+        for (let i = 0; i < arr.length; i ++)
+            if (arr[i] === d)
+                 dem ++ ;
+            return dem ;
+    }
+    function findMax(arr){
+        let max = arr[0];
+        let position = 0;
+        for (let i = 0; i < arr.length; i ++)
+            if (max < arr[i]) position = i;
+            return position;
+    }
+
+    let a = initArray(100);
+    document.write(toString(a));
+  //  let result = find(a,14);
+   //   document.write(result === -1 ? ("<br>" + "Not found ") : ("<br>" + "Position : " + result));
+</script>
+</body>
+</html>

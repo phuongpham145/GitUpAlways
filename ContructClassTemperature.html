@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  var Temperature = function (cencious) {
+      this.cencious = cencious ;
+      this.getCencious = function () {
+          return cencious ;
+      };
+      this.dof = function () {
+          return this.f = this.cencious*1.8+32;
+      };
+      this.dok = function () {
+          return this.k = this.cencious + 273.15 ;
+      }
+      
+  };
+  let temperature = new Temperature(25);
+  let doc = temperature.getCencious();
+  let dof = temperature.dof();
+  let dok = temperature.dok();
+  alert(doc + " Độ C = " + dof + " Độ F = " + dok + " Độ K" );
+</script>
+</body>
+</html>
