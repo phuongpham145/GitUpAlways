@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./JavaProjectZ.js"></script>
+</head>
+<body>
+<style type="text/css">
+    .start {
+        padding-top: 10px;
+        margin-left: 50px;
+    }
+    .score {
+        margin-top: 20px;
+        margin-left: 50px;
+    }
+
+    .over {
+        margin-left: 220px;
+        font-size: 20pt;
+        color: red;
+    }
+</style>
+<div class="start">
+    <label for="">Level:</label>
+    <select id="level">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+    </select>
+    <button type="button" name="button" id="start">Start</button>
+</div>
+<div class="score">
+    Score: <b id="score">0</b>
+</div>
+<div id="gameover" class="over">
+</div>
+<br>
+
+</body>
+</html>

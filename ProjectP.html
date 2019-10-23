@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ProjectP</title>
+    <style>
+        canvas{
+            background-image: url("6d419f4ad069706.png");
+            border: 2px solid black;
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+<body onload="startGame()">
+<script>
+    size = 20;
+    startingRadiusX = 580;
+    endingRadiusX = 800;
+    actionDetected = false;
+    function startGame() {
+        gamearea.start();
+    }
+    function moveShooter(event) {
+        if (!actionDetected){
+            actionDetected = true;
+            movingInterval = setInterval(function () {
+                shooter.move(event),20
+            });
+        }
+    }
+    function stopShooter() {
+        actionDetected = false;
+        clearInterval(movingInterval);
+    }
+    var gamearea = {
+        canvas:document.createElement("canvas"),
+        start:function () {
+            this.canvas.width = 1200;
+            this.canvas.height= 600;
+            this.context = this.canvas.getContext("2d");
+            document.body.insertBefore(this.canvas,document.body.childNodes[0]);
+            t = new chicken();
+            window.addEventListener("keydown",moveShooter,event);
+            window.addEventListener("keyup",stopShooter);
+            this.interval = setInterval(this.updateGameArea,125);
+        },
+        updateGameArea:function () {
+            gamearea.clear();
+            arg = Math.PI*0.01*cnt;
+            ((arg == Math.PI)? t = new chicken(): cnt++);
+            shooter.draw();
+            t.update();
+            t.draw();
+        },
+        clear:function () {
+            gamearea.context.clearRect(0,0,gamearea.canvas.width,gamearea.canvas.height);
+        }
+    }
+    var shooter = {
+        x:590,
+        y:580,
+        draw:function () {
+            gamearea.context.fillStyle = "black";
+            gamearea.context.fillRect(this.x,this.y,size,size);
+            viewer.draw();
+        },
+        clear :function () {
+            gamearea.context.clearRect(this.x,this.y,size,size);
+            gamearea.context.clearRect(viewer.x - 60, viewer.y - 60, 120, 120);
+        }
+        move : function (event) {
+            shooter.clear();
+            switch (event.keyCode) {
+                case 37 : this.x -= 10;
+                        viewer.x -= 10;
+                        break;
+                case 38 : this.y -= 10;
+                    viewer.y -= 10;
+                    break;
+                case 39 : this.X += 10;
+                    viewer.x += 10;
+                    break;
+                case 40 : this.y += 10;
+                    viewer.y += 10;
+                    break;
+            }
+            shooter.draw();
+        }
+    }
+    var viewer = {
+        x:600,
+        y:300,
+        draw:function () {
+            gamearea.context.beginPath();
+            gamearea.context.lineWidth = "3";
+            gamearea.context.strokeStyle = "blue";
+            gamearea.context.arc(this.x,this.y,50,0,2*Math.PI);
+            gamearea.context.stroke();
+            gamearea.context.closePath();
+            gamearea.context.beginPath();
+            gamearea.context.moveTo(this.x, this.y - 60);
+            gamearea.context.lineTo(this.x, this.y + 60);
+            gamearea.context.stroke();
+            gamearea.context.closePath();
+            gamearea.context.moveTo(this.x - 60, this.y);
+            gamearea.context.lineTo(this.x + 60, this.y);
+            gamearea.context.stroke();
+            gamearea.context.closePath();
+        }
+    }
+    function chicken(){
+        this.y = 580;
+        this.radiusY = 580;
+        this.radiusX = startingRadiusX + Math.floor(Math.random()*(endingRadiusX - startingRadiusX + 1));
+        this.centerX = 600;
+        this.centerY = 600;
+        cnt = 0;
+        this.x = this.radiusX + this.centerX;
+        this.draw = function () {
+            gamearea.context.fillStyle = "red";
+            gamearea.context.fillRect(this.x,this.y,size,size);
+        }
+        this.update = function () {
+            this.x = this.centerX + this.radiusX*Math.cos(arg);
+            this.y = this.centerY - this.radiusY*Math.sin(arg);
+        }
+    }
+</script>
+</body>
+</html>

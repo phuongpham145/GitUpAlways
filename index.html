@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <style>
+        /* Tạo giao diện trò choi */
         canvas{
-            background-image:url("442f9bc1fdcbf54.png");
+            background-image:url("6d419f4ad069706.png");
             border:2px solid #000000;
             display:block;
             margin:auto;
@@ -11,7 +12,7 @@
     </style>
 </head>
 <body onload="startGame()">
-<script type="text/javascript">
+<script>
     size=20;
     startingRadiusX=580;
     endingRadiusX=800;
@@ -42,9 +43,9 @@
             this.canvas.height=600;
             this.context=this.canvas.getContext("2d");
             document.body.insertBefore(this.canvas,document.body.childNodes[0]);
-            t=new target();
+            t=new chicken();
             image=new Image();
-            image.src="explosion.png";
+            image.src="255-2556324_pixel-fire-png-transparent-background-poison-mushroom-mario.png";
             window.addEventListener("keydown",moveShooter,event);
             window.addEventListener("keyup",stopShooter);
             this.interval=setInterval(this.updateGameArea,125);
@@ -53,7 +54,7 @@
             gamearea.clear();
             updateScore();
             ang=Math.PI*cnt*0.01;
-            ((ang==Math.PI)? t=new target():cnt++);
+            ((ang==Math.PI)? t=new chicken():cnt++);
             shooter.draw();
             t.update();
             t.draw();
@@ -83,7 +84,7 @@
             if((event.keyCode==37 && shooter.x>0) ||
                 (event.keyCode==38 && viewer.y>0) ||
                 (event.keyCode==39 && shooter.x<1180) ||
-                (event.keyCode==40 && viewer.y<300) || event.keyCode==65){
+                (event.keyCode==40 && viewer.y<300) || event.keyCode==32){
                 shooter.clear();
                 switch(event.keyCode){
                     case 37:
@@ -100,7 +101,7 @@
                     case 40:
                         viewer.y+=10;
                         break;
-                    case 65:
+                    case 32:
                         shooter.shoot();
                         stopShooter();
                         break;
@@ -137,7 +138,7 @@
         this.x=x;
         this.size=20;
         this.draw=function(){
-            gamearea.context.fillStyle="black";
+            gamearea.context.fillStyle="yellow";
             gamearea.context.fillRect(this.x,this.y,this.size,this.size);
         }
         this.update=function(){
@@ -147,7 +148,7 @@
                     this.y>t.y-this.size && this.y<t.y+size){
                     gamearea.context.drawImage(image,this.x,this.y,40,40);
                     score+=t.targetScore;
-                    t=new target();
+                    t=new chicken();
                 }
                 clearInterval(shootingInterval);
                 return;
@@ -161,8 +162,8 @@
             gamearea.context.clearRect(this.x,this.y,this.size,this.size);
         }
     }
-    function target(){
-        this.y=580;
+    function chicken(){
+        this.y=1000;
         this.radiusY=580;
         this.radiusX=startingRadiusX+Math.floor(Math.random()*(endingRadiusX-startingRadiusX+1));
         this.centerX=600;
@@ -171,7 +172,7 @@
         cnt=0;
         this.x=this.radiusX+this.centerX;
         this.draw=function(){
-            gamearea.context.fillStyle="black";
+            gamearea.context.fillStyle="red";
             gamearea.context.fillRect(this.x,this.y,size,size);
         }
         this.update=function(){
